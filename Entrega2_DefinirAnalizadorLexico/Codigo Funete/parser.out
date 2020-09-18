@@ -1,0 +1,115 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> S
+Rule 1     S -> HOLA X
+Rule 2     S -> HOLA Y
+Rule 3     S -> HOLA
+Rule 4     X -> COMA S
+Rule 5     X -> <empty>
+Rule 6     Y -> QUE TAL
+
+Terminals, with rules where they appear
+
+COMA                 : 4
+HOLA                 : 1 2 3
+QUE                  : 6
+TAL                  : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+S                    : 4 0
+X                    : 1
+Y                    : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> . HOLA X
+    (2) S -> . HOLA Y
+    (3) S -> . HOLA
+
+    HOLA            shift and go to state 2
+
+    S                              shift and go to state 1
+
+state 1
+
+    (0) S' -> S .
+
+
+
+state 2
+
+    (1) S -> HOLA . X
+    (2) S -> HOLA . Y
+    (3) S -> HOLA .
+    (4) X -> . COMA S
+    (5) X -> .
+    (6) Y -> . QUE TAL
+
+  ! reduce/reduce conflict for $end resolved using rule 3 (S -> HOLA .)
+    $end            reduce using rule 3 (S -> HOLA .)
+    COMA            shift and go to state 5
+    QUE             shift and go to state 6
+
+  ! $end            [ reduce using rule 5 (X -> .) ]
+
+    X                              shift and go to state 3
+    Y                              shift and go to state 4
+
+state 3
+
+    (1) S -> HOLA X .
+
+    $end            reduce using rule 1 (S -> HOLA X .)
+
+
+state 4
+
+    (2) S -> HOLA Y .
+
+    $end            reduce using rule 2 (S -> HOLA Y .)
+
+
+state 5
+
+    (4) X -> COMA . S
+    (1) S -> . HOLA X
+    (2) S -> . HOLA Y
+    (3) S -> . HOLA
+
+    HOLA            shift and go to state 2
+
+    S                              shift and go to state 7
+
+state 6
+
+    (6) Y -> QUE . TAL
+
+    TAL             shift and go to state 8
+
+
+state 7
+
+    (4) X -> COMA S .
+
+    $end            reduce using rule 4 (X -> COMA S .)
+
+
+state 8
+
+    (6) Y -> QUE TAL .
+
+    $end            reduce using rule 6 (Y -> QUE TAL .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 2 resolved using rule (S -> HOLA)
+WARNING: rejected rule (X -> <empty>) in state 2
+WARNING: Rule (X -> <empty>) is never reduced

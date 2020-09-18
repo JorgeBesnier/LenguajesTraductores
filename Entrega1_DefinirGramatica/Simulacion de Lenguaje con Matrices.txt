@@ -1,0 +1,82 @@
+//Preguntar por las dimenciones
+Def input():
+  While True:
+    Do:
+      num = input () // pedir al usuario un numero entero
+    try:
+      num = int(num) //Verificar que el usuario no escriba una letra o numero flotante
+      return //si puede realizar la línea anterior salir del while
+    err:
+      print(“not numerical”)
+      continue
+
+//multiplicar matrices
+Def multiplicar():
+  if Horizontal_1 <> Vertical_2:
+    print("Dimensiones incorrectas no es posible multiplicar")
+    return
+  multiMat = mat1 * mat2
+  print (multiMat)
+  return
+
+
+//sumar matrices
+Def sumar():
+  if (Horizontal_1 <> Horizontal_2) or (Vertical_1 <> Vertical_2):
+    print ("dimensiones incorrectas no es posible sumar")
+    return
+  sumMat = mat1 + mat2
+  print (sumMat)
+  return
+
+
+//inicio del modulo principal de programacion
+Begin:
+//Prguntar por las dimensiones de la matriz 1
+  print("dimension Horizontal de Matriz 1")
+  call input()
+  Horizontal_1 = num
+  print("dimension Vertical de Matriz 1")
+  call input()
+  Vertical_1 = num
+
+//Prguntar por las dimensiones de la matriz 2
+  print("dimension Horizontal de Matriz 2")
+  call input()
+  Horizontal_2 = num
+  print("dimension Vertical de Matriz 2")
+  call input()
+  Vertical_2 = num
+
+//Definir las Matrices
+  mat1 = mat(Horizontal_1, Vertical_1)
+  mat2 = mat(Horizontal_2, Vertical_2)
+
+//Vaciar datos de matriz 1
+  for h = 0; i < Horizontal_1; i = i + 1:
+    for v = 0; v < Vertical_1; v = v + 1:
+      print("valor de ubicacion ()" h "," v")")
+      call input
+      mat1(h,v) = num
+
+//Vaciar datos de matriz 2
+  for h = 0; i < Horizontal_2; i = i + 1:
+    for v = 0; v < Vertical_2; v = v + 1:
+      print("valor de ubicacion ()" h "," v")")
+      call input
+      mat1(h,v) = num
+
+//menu para el usario
+  while op <> 0:
+    Update:
+      print("1. Multiplicar Matrices  2.Sumar Matrices 3. salir")
+      call input()
+      op = num
+    do:
+      if op == 1:
+        call multiplicar
+      else op == 2:
+        call sumar
+
+
+  print ("fin del programa")
